@@ -8,6 +8,8 @@ import io.reactivex.rxjava3.core.Observable;
 public class App {
     public static void main(String[] args) {
         final Observable<String> emits = Observable.just("Alpha", "Beta", "Gamma");
-        emits.subscribe(System.out::println);
+        emits
+            .map(String::length)
+            .subscribe(System.out::println);
     }
 }
