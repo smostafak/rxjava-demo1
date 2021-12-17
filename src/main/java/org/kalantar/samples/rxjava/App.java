@@ -5,14 +5,15 @@ package org.kalantar.samples.rxjava;
 
 import io.reactivex.rxjava3.core.Observable;
 
-import java.util.concurrent.TimeUnit;
-
 public class App {
-    public static void main(String[] args) throws InterruptedException {
-        final Observable<Long> interval =
-            Observable.interval(1, TimeUnit.SECONDS);
-        interval.subscribe(System.out::println);
-        
-        Thread.currentThread().join(5000);
-    }
+  public static void main(String[] args) {
+    final Observable<Object> src = Observable.create(emitter -> {
+      emitter.onNext("Alpha");
+      emitter.onNext("Beta");
+      emitter.onNext("Gamma");
+      emitter.onComplete();
+    });
+
+    src.subscribe(o -> System.out.println("Received: " + o));
+  }
 }
