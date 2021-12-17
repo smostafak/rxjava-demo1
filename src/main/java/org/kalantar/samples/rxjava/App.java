@@ -4,7 +4,7 @@ import io.reactivex.rxjava3.core.Observable;
 
 public class App {
   public static void main(String[] args) {
-    final Observable<Object> src = Observable.create(emitter -> {
+    final Observable<String> src = Observable.create(emitter -> {
       try {
         emitter.onNext("Alpha");
         emitter.onNext("Beta");
@@ -15,7 +15,9 @@ public class App {
       }
     });
 
-    src.subscribe(o ->
-        System.out.println("Received: " + o), Throwable::printStackTrace);
+    src.map(String::length)
+        .filter(i -> i >= 5)
+        .subscribe(o ->
+            System.out.println("Received: " + o), Throwable::printStackTrace);
   }
 }
