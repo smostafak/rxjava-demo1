@@ -9,7 +9,6 @@ public class App {
         .filter(i -> i >= 5)
         .subscribe(
             i -> System.out.println("RECEIVED: " + i),
-            Throwable::printStackTrace,
-            () -> System.out.println("Done!"));
+            Throwable::printStackTrace);
   }
 }
