@@ -4,10 +4,9 @@ import io.reactivex.rxjava3.core.Observable;
 
 public class App {
   public static void main(String[] args) {
-    Observable.just("Alpha", "Beta", "Gamma")
-        .map(String::length)
-        .filter(i -> i >= 5)
-        .subscribe(
-            i -> System.out.println("RECEIVED: " + i));
+    final Observable<String> src = Observable.just("Alpha", "Beta", "Gamma");
+    src.subscribe(s -> System.out.println("Observer 1: " + s));
+    src.subscribe(s -> System.out.println("Observer 2: " + s));
+
   }
 }
