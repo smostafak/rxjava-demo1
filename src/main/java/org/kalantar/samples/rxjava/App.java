@@ -8,7 +8,6 @@ public class App {
         .map(String::length)
         .filter(i -> i >= 5)
         .subscribe(
-            i -> System.out.println("RECEIVED: " + i),
-            Throwable::printStackTrace);
+            i -> System.out.println("RECEIVED: " + i));
   }
 }
