@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AppTest {
+class ReactiveAppTest {
     @Test
     void shouldLoadPersons() {
         Database db = Database.test();
