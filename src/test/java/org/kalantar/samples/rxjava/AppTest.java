@@ -3,11 +3,18 @@
  */
 package org.kalantar.samples.rxjava;
 
+import org.davidmoten.rx.jdbc.Database;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
-    @Test void appHasAGreeting() {
+    @Test
+    void shouldLoadPersons() {
+        Database db = Database.test();
+        db.select("select name from person")
+                .getAs(String.class)
+                .blockingForEach(System.out::println);
     }
 }
                                                                                                      
