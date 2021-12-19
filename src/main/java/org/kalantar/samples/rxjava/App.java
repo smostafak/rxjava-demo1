@@ -7,6 +7,5 @@ public class App {
     final Observable<String> src = Observable.just("Alpha", "Beta", "Gamma");
     src.subscribe(s -> System.out.println("Observer 1: " + s));
     src.subscribe(s -> System.out.println("Observer 2: " + s));
-
   }
 }
