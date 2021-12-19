@@ -1,13 +1,17 @@
 package org.kalantar.samples.rxjava;
 
+
 import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.observables.ConnectableObservable;
 
 public class ReactiveApp {
     public static void main(String[] args) {
-        final Observable<String> src = Observable.just("Alpha", "Beta", "Gamma");
-        src.subscribe(s -> System.out.println("Observer 1: " + s));
+        final ConnectableObservable<String> src =
+                Observable.just("Alpha", "Beta", "Gamma").publish();
+        src.subscribe(s -> System.out.println("[" + Thread.currentThread().getId() + "] Observer 1: " + s));
         src.map(String::length)
                 .filter(i -> i >= 5)
-                .subscribe(s -> System.out.println("Observer 2: " + s));
+                .subscribe(s -> System.out.println("[" + Thread.currentThread().getId() + "] Observer 2: " + s));
+        src.connect();
     }
 }
