@@ -8,7 +8,7 @@ public class ReactiveApp {
     private static int COUNT = 3;
 
     public static void main(String[] args) {
-        final var range = Observable.range(START, COUNT);
+        final var range = Observable.defer(() ->  Observable.range(START, COUNT));
         final var name = Thread.currentThread().getName();
         range.subscribe(i -> System.out.println("[" + name + "] Observer 1: " + i));
         COUNT = 5;
