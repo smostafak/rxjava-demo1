@@ -1,12 +1,12 @@
 package org.kalantar.samples.rxjava;
 
 
-import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Single;
 
 public class ReactiveApp {
     public static void main(String[] args) {
-        Observable.fromCallable(() -> 1 / 0)
-                .subscribe(i -> System.out.println("RCV: " + i),
-                        e -> System.out.println("ERR: " + e));
+        Single.just("Hello!")
+                .map(String::length)
+                .subscribe(System.out::println, e -> System.out.println("ERR: " + e));
     }
 }
