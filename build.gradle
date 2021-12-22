@@ -22,7 +22,7 @@ dependencies {
 }
 
 application {
-    mainClass = 'org.kalantar.samples.rxjava.ReactiveJavaFxApp'
+    mainClass = 'org.kalantar.samples.rxjava.ReactiveApp'
 }
 
 tasks.named('test') {
