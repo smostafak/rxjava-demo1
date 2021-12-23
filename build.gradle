@@ -8,7 +8,7 @@ repositories {
 }
 
 javafx {
-    sdk = 'c:/develop/javafx-sdk-17.0.1'
+//    sdk = 'c:/develop/javafx-sdk-17.0.1'
     modules = ['javafx.controls', 'javafx.fxml']
 }
 
